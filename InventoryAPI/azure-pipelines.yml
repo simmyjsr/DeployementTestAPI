@@ -11,10 +11,17 @@ steps:
     version: '8.x'
 
 - script: dotnet restore
-  displayName: 'Restore NuGet Packages'
-
-- script: dotnet build --configuration Release
-  displayName: 'Build Project'
-
+- script: dotnet build -c Release
 - script: dotnet test
-  displayName: 'Run Unit Tests'
+- script: dotnet publish -c Release -o $(Build.ArtifactStagingDirectory)
+
+- task: PublishBuildArtifacts@1
+  inputs:
+    pathToPublish: '$(Build.ArtifactStagingDirectory)'
+    artifactName: 'drop'
+
+- task: AzureWebApp@1
+  inputs:
+    azureSubscription: 'AzureServiceConnection'
+    appName: 'myapi'
+    package: '$(Build.ArtifactStagingDirectory)'
