@@ -26,23 +26,23 @@ steps:
 - script: dotnet test --no-build
   displayName: 'Run Tests'
 
-# 🔑 Publish Web API (IMPORTANT)
 - script: |
     dotnet publish InventoryAPI.csproj `
       -c $(buildConfiguration) `
       -o $(publishDir)
   displayName: 'Publish Web API'
 
-# Artifact (optional but good)
+
 - task: PublishBuildArtifacts@1
   inputs:
     pathToPublish: '$(publishDir)'
     artifactName: 'drop'
 
-# 🚀 Deploy to Azure App Service
+
 - task: AzureWebApp@1
   displayName: 'Deploy to Azure'
   inputs:
     azureSubscription: 'AzureServiceConnection'
-    appName: 'inventoryapiseema-hmfbfce0eshcgaey'   # EXACT App Service name
+    appName: 'InventoryAPISeema'
     package: '$(publishDir)'
+
