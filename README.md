@@ -1,3 +1,18 @@
+Prompt-- 
+You are an experienced enterprise software architect with 20+ years of expertise in designing scalable, secure, and maintainable systems. I am building an Utensils Management System using .NET Core with a RESTful API backend. Your task is to propose a complete enterprise-level architecture and development flow, including:
+1.	Architecture Layers: Presentation, Application, Domain, Infrastructure, Data Access, and Integration.
+2.	Design Patterns: Recommend patterns such as Repository, Unit of Work, Dependency Injection, CQRS, and Domain-Driven Design where appropriate.
+3.	Standards & Best Practices: Coding standards, naming conventions, SOLID principles, clean architecture guidelines.
+4.	Security: Authentication/Authorization (JWT, OAuth2), input validation, encryption, secure configuration.
+5.	Scalability & Performance: Caching, async programming, database optimization, logging, monitoring.
+6.	DevOps & Deployment: CI/CD pipeline setup, containerization with Docker, orchestration with Kubernetes, environment configuration.
+7.	Testing Strategy: Unit tests, integration tests, automated regression tests, test data management.
+8.	Documentation & Governance: API documentation (Swagger/OpenAPI), versioning strategy, code reviews, branching model (GitFlow).
+9.	Future Growth: How to evolve the system into microservices or event-driven architecture if needed.
+Deliver the output as a structured plan with diagrams (if possible), step-by-step flow, and justification for each design choice. The goal is to ensure the system is robust, maintainable, and aligned with enterprise standards.
+
+
+
 1.	Architecture layers (project & responsibilities)
 •	Presentation (InventoryAPI.Api)
 •	ASP.NET Core Web API controllers, request/response DTOs, API versioning, Swagger, input model validation.
