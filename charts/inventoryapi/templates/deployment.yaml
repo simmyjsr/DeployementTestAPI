@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ include "inventoryapi.fullname" . }}
+spec:
+  replicas: {{ .Values.replicaCount }}
+  selector:
+    matchLabels:
+      app: {{ include "inventoryapi.name" . }}
+  template:
+    metadata:
+      labels:
+        app: {{ include "inventoryapi.name" . }}
+    spec:
+      containers:
+        - name: {{ include "inventoryapi.name" . }}
+          image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
+          ports:
+            - containerPort: {{ .Values.service.port }}
+          env:
+            - name: ConnectionStrings__DefaultConnection
+              value: {{ .Values.connectionString | default "" }}

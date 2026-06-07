@@ -1,0 +1,59 @@
+name: CI
+
+on:
+  push:
+    branches: [ main, Development ]
+  pull_request:
+    branches: [ main, Development ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v4
+    - name: Setup .NET
+      uses: actions/setup-dotnet@v3
+      with:
+        dotnet-version: 8.0.x
+
+    - name: Restore
+      run: dotnet restore InventoryAPI/InventoryAPI.csproj
+
+    - name: Build
+      run: dotnet build --no-restore InventoryAPI/InventoryAPI.csproj -c Release
+
+    - name: Test
+      run: |
+        if [ -f "InventoryAPI.Tests/InventoryAPI.Tests.csproj" ]; then
+          dotnet test InventoryAPI.Tests/InventoryAPI.Tests.csproj --no-build -c Release
+        fi
+
+    - name: Publish Docker image
+      if: github.ref == 'refs/heads/main'
+      run: |
+        docker build -t ${{ github.repository }}:latest -f InventoryAPI/Dockerfile .
+        echo "Docker image built"
+
+    - name: Login to ACR
+      if: github.ref == 'refs/heads/main'
+      uses: azure/docker-login@v1
+      with:
+        login-server: ${{ secrets.ACR_LOGIN_SERVER }}
+        username: ${{ secrets.ACR_USERNAME }}
+        password: ${{ secrets.ACR_PASSWORD }}
+
+    - name: Push to ACR
+      if: github.ref == 'refs/heads/main'
+      run: |
+        docker tag ${{ github.repository }}:latest ${{ secrets.ACR_LOGIN_SERVER }}/inventoryapi:latest
+        docker push ${{ secrets.ACR_LOGIN_SERVER }}/inventoryapi:latest
+
+    - name: Deploy to AKS
+      if: github.ref == 'refs/heads/main'
+      uses: azure/aks-deploy@v1
+      with:
+        creds: ${{ secrets.AZURE_CREDENTIALS }}
+        cluster-name: ${{ secrets.AKS_CLUSTER_NAME }}
+        resource-group: ${{ secrets.AKS_RESOURCE_GROUP }}
+        manifests: charts/inventoryapi/templates/deployment.yaml

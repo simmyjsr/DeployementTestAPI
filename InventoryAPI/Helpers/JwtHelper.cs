@@ -17,7 +17,9 @@ namespace InventoryAPI.Helpers
 
         public LoginResponse GenerateToken(User user)
         {
-            var key = Encoding.UTF8.GetBytes(_config["Jwt:Key"]);
+            var keyString = Environment.GetEnvironmentVariable("JWT_KEY") ?? _config["Jwt:Key"];
+            if (string.IsNullOrEmpty(keyString)) throw new InvalidOperationException("JWT key not configured.");
+            var key = Encoding.UTF8.GetBytes(keyString);
             var claims = new[]
             {
             new Claim(ClaimTypes.Name, user.Username),

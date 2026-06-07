@@ -1,0 +1,1 @@
+SELECT SupplierID, SupplierName, ContactPerson, Email, Phone, Address, CreatedAt, Status FROM Suppliers WHERE SupplierID = @Id

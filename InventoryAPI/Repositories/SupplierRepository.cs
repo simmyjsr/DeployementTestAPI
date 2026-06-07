@@ -1,6 +1,7 @@
-﻿
+
 using Dapper;
 using InventoryAPI.Data;
+using InventoryAPI.Infrastructure;
 using InventoryAPI.Models;
 using Microsoft.Data.SqlClient;
 using System.Collections.Generic;
@@ -11,6 +12,13 @@ namespace InventoryAPI.Repositories
     {
         private readonly DapperContext _context;
 
+        // SQL loaded from embedded resources
+        private string SqlInsert => SqlResourceLoader.GetSql("Suppliers.Insert.sql");
+        private string SqlDelete => SqlResourceLoader.GetSql("Suppliers.Delete.sql");
+        private string SqlGetAll => SqlResourceLoader.GetSql("Suppliers.GetAll.sql");
+        private string SqlGetById => SqlResourceLoader.GetSql("Suppliers.GetById.sql");
+        private string SqlUpdate => SqlResourceLoader.GetSql("Suppliers.Update.sql");
+
         public SupplierRepository(DapperContext context)
         {
             _context = context;
@@ -19,44 +27,36 @@ namespace InventoryAPI.Repositories
         {
             using var connection = _context.CreateConnection();
             supplier.CreatedAt = DateTime.UtcNow;
-            var sql = @"INSERT INTO Suppliers (SupplierName, ContactPerson, Email, Phone, Address, CreatedAt, Status) 
-                    VALUES (@SupplierName, @ContactPerson, @Email, @Phone, @Address, @CreatedAt, @Status)";
-           int affectedRows= await connection.ExecuteAsync(sql, supplier);
-            return affectedRows;
+           // return the inserted identity id
+           var id = await connection.ExecuteScalarAsync<int>(SqlInsert, supplier);
+           return id;
         }
 
         public async Task<bool> DeleteSupplier(int id)
         {
             using var connection = _context.CreateConnection();
-            int rowsAffected = await connection.ExecuteAsync("DELETE FROM Suppliers WHERE SupplierID = @Id", new { Id = id });
+            int rowsAffected = await connection.ExecuteAsync(SqlDelete, new { Id = id });
             return rowsAffected > 0;
         }
 
         public async Task<IEnumerable<Supplier>> GetAllSupplier()
         {
             using var connection = _context.CreateConnection();
-              var data=await connection.QueryAsync<Supplier>("SELECT SupplierID,SupplierName FROM SUPPLIERS");
+              var data = await connection.QueryAsync<Supplier>(SqlGetAll);
             return data;
-            //return (IEnumerable<Product>)await connection.QueryAsync<Product>("SELECT * FROM Products");
-
         }
 
         public async Task<bool> UpdateSupplier(Supplier supplier)
         {
             using var connection = _context.CreateConnection();
-            var sql = @"UPDATE Suppliers 
-                    SET SupplierName = @SupplierName, ContactPerson = @ContactPerson, Email = @Email, 
-                        Phone = @Phone, Address = @Address, Status = @Status 
-                    WHERE SupplierID = @SupplierID";
-           int rowsAffected = await connection.ExecuteAsync(sql, supplier);
+           int rowsAffected = await connection.ExecuteAsync(SqlUpdate, supplier);
             return rowsAffected > 0;
         }
 
         public async Task<Supplier?> GetSupplierById(int id)
         {
             using var connection = _context.CreateConnection();
-            return await connection.QueryFirstOrDefaultAsync<Supplier>(
-                "SELECT SupplierID,SupplierName FROM Suppliers WHERE SupplierID = @Id", new { Id = id });
+            return await connection.QueryFirstOrDefaultAsync<Supplier>(SqlGetById, new { Id = id });
         }
 
        
