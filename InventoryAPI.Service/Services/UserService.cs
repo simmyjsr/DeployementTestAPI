@@ -2,7 +2,7 @@ using InventoryAPI.Helpers;
 using InventoryAPI.Models;
 using InventoryAPI.Repositories;
 
-namespace InventoryAPI.Services
+namespace InventoryAPI.Infrastructure.Services
 {
     public class UserService : IUserService
     {

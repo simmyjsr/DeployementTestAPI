@@ -1,0 +1,81 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net10.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <EnableDefaultCompileItems>false</EnableDefaultCompileItems>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\InventoryAPI.Domain\InventoryAPI.Domain.csproj" />
+  </ItemGroup>
+  <ItemGroup>
+    <!-- Move service and repository interfaces from Web to Application -->
+    <Compile Include="..\InventoryAPI\Services\ICategoryService.cs">
+      <Link>Services\ICategoryService.cs</Link>
+    </Compile>
+    <Compile Include="..\InventoryAPI\Services\IProductService.cs">
+      <Link>Services\IProductService.cs</Link>
+    </Compile>
+    <Compile Include="..\InventoryAPI\Services\ISupplierService.cs">
+      <Link>Services\ISupplierService.cs</Link>
+    </Compile>
+    <Compile Include="..\InventoryAPI\Services\IUserService.cs">
+      <Link>Services\IUserService.cs</Link>
+    </Compile>
+    <Compile Include="..\InventoryAPI\Repositories\ICategoryRepository.cs">
+      <Link>Repositories\ICategoryRepository.cs</Link>
+    </Compile>
+    <Compile Include="..\InventoryAPI\Repositories\IProductRepo.cs">
+      <Link>Repositories\IProductRepo.cs</Link>
+    </Compile>
+    <Compile Include="..\InventoryAPI\Repositories\ISupplierRepository.cs">
+      <Link>Repositories\ISupplierRepository.cs</Link>
+    </Compile>
+    <Compile Include="..\InventoryAPI\Repositories\IUserRepo.cs">
+      <Link>Repositories\IUserRepo.cs</Link>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="..\InventoryAPI\Features\**\*.cs">
+      <Link>Features\%(RecursiveDir)%(Filename)%(Extension)</Link>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <!-- Service interfaces -->
+    <Compile Include="..\InventoryAPI\Services\ICategoryService.cs">
+      <Link>Services\ICategoryService.cs</Link>
+    </Compile>
+    <Compile Include="..\InventoryAPI\Services\IProductService.cs">
+      <Link>Services\IProductService.cs</Link>
+    </Compile>
+    <Compile Include="..\InventoryAPI\Services\ISupplierService.cs">
+      <Link>Services\ISupplierService.cs</Link>
+    </Compile>
+    <Compile Include="..\InventoryAPI\Services\IUserService.cs">
+      <Link>Services\IUserService.cs</Link>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <!-- Repository interfaces belong in Application layer -->
+    <Compile Include="..\InventoryAPI\Repositories\ICategoryRepository.cs">
+      <Link>Repositories\ICategoryRepository.cs</Link>
+    </Compile>
+    <Compile Include="..\InventoryAPI\Repositories\IProductRepo.cs">
+      <Link>Repositories\IProductRepo.cs</Link>
+    </Compile>
+    <Compile Include="..\InventoryAPI\Repositories\ISupplierRepository.cs">
+      <Link>Repositories\ISupplierRepository.cs</Link>
+    </Compile>
+    <Compile Include="..\InventoryAPI\Repositories\IUserRepo.cs">
+      <Link>Repositories\IUserRepo.cs</Link>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <!-- Application dependencies -->
+    <PackageReference Include="MediatR" Version="11.1.0" />
+    <PackageReference Include="FluentValidation" Version="11.4.0" />
+  </ItemGroup>
+
+</Project>

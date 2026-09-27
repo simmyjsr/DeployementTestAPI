@@ -1,6 +1,5 @@
-﻿using Dapper;
+using Dapper;
 using InventoryAPI.Data;
-using InventoryAPI.Helpers;
 using InventoryAPI.Models;
 using InventoryAPI.Repositories;
 using Microsoft.Data.SqlClient;
@@ -75,7 +74,7 @@ namespace InventoryAPI.Repositories
         {
             using var connection = _context.CreateConnection();
             //string query = "UPDATE Products SET ProductName = @ProductName, Category = @Category, Stock = @Stock, Price = @Price WHERE ProductID = @ProductID";
-            int rowsAffected = await connection.ExecuteAsync(Queries.UpdateProducts, product);
+            int rowsAffected = await connection.ExecuteAsync(InventoryAPI.Helpers.Queries.UpdateProducts, product);
             return rowsAffected > 0;
         }
 
@@ -83,7 +82,7 @@ namespace InventoryAPI.Repositories
         public async Task<IEnumerable<Product>> SearchProductsAsync(string searchText)
         {
             using var connection = _context.CreateConnection();
-            return (IEnumerable<Product>)await connection.QueryAsync<Product>(Queries.GetFilteredProducts, new { searchText = searchText });
+            return (IEnumerable<Product>)await connection.QueryAsync<Product>(InventoryAPI.Helpers.Queries.GetFilteredProducts, new { searchText = searchText });
 
         }
 

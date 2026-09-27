@@ -23,12 +23,45 @@
     <PackageReference Include="MediatR.Extensions.Microsoft.DependencyInjection" Version="11.1.0" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\InventoryAPI.Domain\InventoryAPI.Domain.csproj" />
+    <ProjectReference Include="..\InventoryAPI.Application\InventoryAPI.Application.csproj" />
+    <ProjectReference Include="..\InventoryAPI.Infrastructure\InventoryAPI.Infrastructure.csproj" />
+  </ItemGroup>
+
   <PropertyGroup>
     <GenerateDocumentationFile>true</GenerateDocumentationFile>
     <NoWarn>1591</NoWarn>
   </PropertyGroup>
   <ItemGroup>
     <EmbeddedResource Include="Sql\**\*.sql" />
+    <!-- Keep SwaggerExtensions in Web project for AddSwaggerGen usage -->
+    <!-- SwaggerExtensions removed; keep Swagger wiring in Web via Swashbuckle package references and Program.cs -->
   </ItemGroup>
-
+  <!-- Exclude sources moved to class libraries (linked into their owning projects) -->
+  <ItemGroup>
+    <Compile Remove="Models\**\*.cs" />
+    <Compile Remove="Exceptions\**\*.cs" />
+    <Compile Remove="EntityModel\**\*.cs" />
+    <Compile Remove="EntityConfigurations\**\*.cs" />
+    <Compile Remove="Services\**\*.cs" />
+    <Compile Remove="Features\**\*.cs" />
+    <Compile Remove="Data\**\*.cs" />
+    <Compile Remove="Infrastructure\**\*.cs" />
+    <Compile Remove="Repositories\**\*.cs" />
+    <EmbeddedResource Remove="Sql\**\*.sql" />
+  </ItemGroup>
+  <!-- Exclude sources moved to class libraries (linked into their owning projects) -->
+  <ItemGroup>
+    <Compile Remove="Models\**\*.cs" />
+    <Compile Remove="Exceptions\**\*.cs" />
+    <Compile Remove="EntityModel\**\*.cs" />
+    <Compile Remove="EntityConfigurations\**\*.cs" />
+    <Compile Remove="Services\**\*.cs" />
+    <Compile Remove="Features\**\*.cs" />
+    <Compile Remove="Data\**\*.cs" />
+    <Compile Remove="Infrastructure\**\*.cs" />
+    <Compile Remove="Repositories\**\*.cs" />
+    <EmbeddedResource Remove="Sql\**\*.sql" />
+  </ItemGroup>
 </Project>

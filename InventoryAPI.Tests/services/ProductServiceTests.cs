@@ -1,14 +1,8 @@
-using System;
-using System.Collections.Generic;
-using System.IO;
 using System.Text;
-using System.Threading.Tasks;
 using InventoryAPI.Models;
 using InventoryAPI.Repositories;
-using InventoryAPI.Services;
 using Microsoft.AspNetCore.Http;
 using Moq;
-using Xunit;
 
 namespace InventoryAPI.Tests.Services
 {

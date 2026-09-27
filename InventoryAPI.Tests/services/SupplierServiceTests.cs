@@ -1,10 +1,6 @@
-using System.Collections.Generic;
-using System.Threading.Tasks;
 using InventoryAPI.Models;
 using InventoryAPI.Repositories;
-using InventoryAPI.Services;
 using Moq;
-using Xunit;
 
 namespace InventoryAPI.Tests.Services
 {

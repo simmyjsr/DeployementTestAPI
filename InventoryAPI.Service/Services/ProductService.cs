@@ -3,8 +3,7 @@ using InventoryAPI.Models;
 using InventoryAPI.Repositories;
 using static InventoryAPI.Helpers.CommonMethods;
 
-
-namespace InventoryAPI.Services
+namespace InventoryAPI.Infrastructure.Services
 {
     public class ProductService : IProductService
     {
@@ -41,9 +40,30 @@ namespace InventoryAPI.Services
 
             if (request.Image != null)
             {
-                using var memoryStream = new MemoryStream();
-                await request.Image.CopyToAsync(memoryStream);
-                product.ImageBytes = memoryStream.ToArray(); // Convert image to byte[]
+                // request.Image previously was IFormFile; after refactor domain uses byte[] for image.
+                // If Image is IFormFile keep existing behavior; if it is byte[] assign directly.
+                if (request.Image is byte[] bytes)
+                {
+                    product.ImageBytes = bytes;
+                }
+                else
+                {
+                    using var memoryStream = new MemoryStream();
+                    // try to dynamically handle IFormFile-like types if present
+                    var copyToAsync = request.Image?.GetType().GetMethod("CopyToAsync");
+                    if (copyToAsync != null)
+                    {
+                        // assume it's IFormFile-like; call CopyToAsync via reflection
+                        var task = (System.Threading.Tasks.Task)copyToAsync.Invoke(request.Image, new object[] { memoryStream, default(System.Threading.CancellationToken) });
+                        await task;
+                        product.ImageBytes = memoryStream.ToArray();
+                    }
+                    else if (request.Image is System.IO.Stream s)
+                    {
+                        await s.CopyToAsync(memoryStream);
+                        product.ImageBytes = memoryStream.ToArray();
+                    }
+                }
             }
             return await _repository.AddProductAsync(product);
          }

@@ -1,4 +1,4 @@
-﻿namespace InventoryAPI.Models
+namespace InventoryAPI.Models
 {
     public class viewProduct
     {
@@ -12,7 +12,8 @@
             get; set;
         }
         public string? ProductNumber { get; set; }
-        public IFormFile? Image { get; set; }
+        // Use a byte[] for image payload in the domain model to avoid ASP.NET-specific types
+        public byte[]? Image { get; set; }
         public byte[]? ImageBytes { get; set; }
 
         public bool Feature { get; set; } = false;

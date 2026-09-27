@@ -1,13 +1,14 @@
 using InventoryAPI.Data;
 using InventoryAPI.Helpers;
 using InventoryAPI.Repositories;
-using InventoryAPI.Services;
+using InventoryAPI.Infrastructure.Services;
 using InventoryAPI.Infrastructure.Repositories;
 using Microsoft.IdentityModel.Tokens;
 using System.Text;
 using Serilog;
 using MediatR;
 using FluentValidation;
+using InventoryAPI.Services;
 // FluentValidation removed to avoid package resolution issues in this environment. Add back when ready.
 
 var builder = WebApplication.CreateBuilder(args);
@@ -37,14 +38,16 @@ builder.Host.UseSerilog((ctx, lc) =>
 
 builder.Services.AddSingleton<DapperContext>();
 builder.Services.AddScoped<IProductRepo, ProductRepo>();
-builder.Services.AddScoped<IProductService, ProductService>();
+// Register service implementations from the Infrastructure assembly (namespace: InventoryAPI.Infrastructure.Services)
+builder.Services.AddScoped<IProductService, InventoryAPI.Infrastructure.Services.ProductService>();
 builder.Services.AddScoped<ICategoryRepository, CategoryRepository>();
-builder.Services.AddScoped<ICategoryService, CategoryService>();
+builder.Services.AddScoped<ICategoryService, InventoryAPI.Infrastructure.Services.CategoryService>();
 builder.Services.AddScoped<IUserRepo, UserRepo>();
-builder.Services.AddScoped<IUserService, UserService>();
+builder.Services.AddScoped<IUserService, InventoryAPI.Infrastructure.Services.UserService>();
 builder.Services.AddScoped<ISupplierRepository, SupplierRepository>();
-builder.Services.AddScoped<ISupplierService, SupplierService>();
-builder.Services.AddSingleton<JwtHelper>();
+builder.Services.AddScoped<ISupplierService, InventoryAPI.Infrastructure.Services.SupplierService>();
+// Register JwtHelper from the Helpers namespace (implemented in Infrastructure)
+builder.Services.AddSingleton<InventoryAPI.Helpers.JwtHelper>();
 
 // Generic repository / unit of work (skeleton)
 builder.Services.AddScoped(typeof(IGenericRepository<>), typeof(InventoryAPI.Infrastructure.Repositories.GenericRepository<>));

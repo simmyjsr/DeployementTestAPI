@@ -1,4 +1,4 @@
-﻿namespace InventoryAPI.Models
+namespace InventoryAPI.Models
 {
     public class Product
     {
@@ -33,7 +33,8 @@
         public decimal Price { get; set; }
         public int StockQuantity { get; set; }
         public int CategoryID { get; set; }
-        public IFormFile? Image { get; set; }
+        // Image data moved to byte[] to avoid ASP.NET-specific dependency in domain layer
+        public byte[]? Image { get; set; }
         public DateTime CreatedAt { get; set; }
         public string CreatedBy { get; set; }
         public DateTime UpdatedAt { get; set; }

@@ -1,7 +1,7 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFramework>net8.0</TargetFramework>
+    <TargetFramework>net10.0</TargetFramework>
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
   </PropertyGroup>
@@ -16,6 +16,13 @@
     <Compile Include="..\InventoryAPI\Models\**\*.cs">
       <Link>Models\%(RecursiveDir)%(Filename)%(Extension)</Link>
     </Compile>
+    <Compile Include="..\InventoryAPI\Exceptions\**\*.cs">
+      <Link>Exceptions\%(RecursiveDir)%(Filename)%(Extension)</Link>
+    </Compile>
+    <Compile Include="..\InventoryAPI\EntityModel\**\*.cs">
+      <Link>EntityModel\%(RecursiveDir)%(Filename)%(Extension)</Link>
+    </Compile>
+    <!-- EntityConfigurations moved to Infrastructure project (depends on EF Core) -->
   </ItemGroup>
 
 </Project>

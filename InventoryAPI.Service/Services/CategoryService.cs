@@ -1,7 +1,7 @@
 using InventoryAPI.EntityModel;
 using InventoryAPI.Repositories;
 
-namespace InventoryAPI.Services
+namespace InventoryAPI.Infrastructure.Services
 {
     public class CategoryService : ICategoryService
     {
