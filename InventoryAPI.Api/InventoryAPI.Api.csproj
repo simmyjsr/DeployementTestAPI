@@ -1,0 +1,32 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\InventoryAPI.Service\InventoryAPI.Service.csproj" />
+    <ProjectReference Include="..\InventoryAPI.Repository\InventoryAPI.Repository.csproj" />
+    <ProjectReference Include="..\InventoryAPI.Domain\InventoryAPI.Domain.csproj" />
+    <ProjectReference Include="..\InventoryAPI.Utility\InventoryAPI.Utility.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <!-- Include legacy API sources from the original InventoryAPI folder -->
+    <Compile Include="..\InventoryAPI\Program.cs" />
+    <Compile Include="..\InventoryAPI\Controllers\**\*.cs" />
+    <Compile Include="..\InventoryAPI\Extensions\**\*.cs" />
+    <None Include="..\InventoryAPI\Properties\launchSettings.json" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="8.0.15" />
+    <PackageReference Include="Swashbuckle.AspNetCore" Version="6.4.0" />
+    <PackageReference Include="Serilog.AspNetCore" Version="7.0.0" />
+  </ItemGroup>
+
+  <!-- Rely on SDK implicit compile items; explicit Compile Include removed to avoid duplicate compile items. -->
+
+</Project>

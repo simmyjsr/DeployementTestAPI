@@ -1,0 +1,21 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore.Http.Abstractions" Version="2.2.0" />
+  </ItemGroup>
+
+  <!-- Use SDK implicit include of source files. Explicit includes caused duplicate compile items. -->
+  <ItemGroup>
+    <!-- Link model files from the legacy InventoryAPI\Models folder into the Domain project so shared types (InventoryAPI.Models) are available to other projects. -->
+    <Compile Include="..\InventoryAPI\Models\**\*.cs">
+      <Link>Models\%(RecursiveDir)%(Filename)%(Extension)</Link>
+    </Compile>
+  </ItemGroup>
+
+</Project>

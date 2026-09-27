@@ -1,0 +1,23 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\InventoryAPI.Domain\InventoryAPI.Domain.csproj" />
+    <ProjectReference Include="..\InventoryAPI.Repository\InventoryAPI.Repository.csproj" />
+    <ProjectReference Include="..\InventoryAPI.Utility\InventoryAPI.Utility.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Include="..\InventoryAPI\Services\**\*.cs" />
+    <Compile Include="..\InventoryAPI\Features\**\*.cs" />
+    <Compile Include="..\InventoryAPI\Extensions\**\*.cs" />
+  </ItemGroup>
+
+  <!-- Use SDK default compile items; do not explicitly include **\*.cs to avoid duplicate compile items -->
+
+</Project>
