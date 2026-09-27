@@ -1,0 +1,556 @@
+{
+  "settings": {
+    "components": {
+      "code": true,
+      "binaries": false
+    },
+    "targetId": "net10.0",
+    "targetDisplayName": ".NETCoreApp,Version=v10.0"
+  },
+  "analysisStartTime": "2026-09-27T12:01:03.5903509Z",
+  "analysisEndTime": "2026-09-27T12:01:04.3333222Z",
+  "privacyModeHelpUrl": "https://go.microsoft.com/fwlink/?linkid=2270980",
+  "stats": {
+    "summary": {
+      "projects": 2,
+      "issues": 6,
+      "incidents": 16,
+      "effort": 16
+    },
+    "charts": {
+      "severity": {
+        "Mandatory": 8,
+        "Optional": 2,
+        "Potential": 6,
+        "Information": 0
+      },
+      "category": {
+        "NuGet": 5,
+        "Project": 1,
+        "Api": 10
+      }
+    }
+  },
+  "projects": [
+    {
+      "path": "InventoryAPI\\InventoryAPI.csproj",
+      "startingProject": true,
+      "issues": 5,
+      "storyPoints": 16,
+      "properties": {
+        "appName": "InventoryAPI",
+        "projectKind": "AspNetCore",
+        "frameworks": [
+          "net8.0"
+        ],
+        "languages": [
+          "C#"
+        ],
+        "tools": [
+          "MSBuild"
+        ],
+        "isSdkStyle": true,
+        "numberOfFiles": 55,
+        "numberOfCodeFiles": 49,
+        "linesTotal": 1530,
+        "linesOfCode": 1492,
+        "totalApiScanned": 1477,
+        "minLinesOfCodeToChange": 10,
+        "maxLinesOfCodeToChange": 10
+      },
+      "ruleInstances": [
+        {
+          "incidentId": "be559c6e-d11e-4942-b03c-44341007e310",
+          "ruleId": "NuGet.0002",
+          "projectPath": "InventoryAPI\\InventoryAPI.csproj",
+          "state": "Active",
+          "location": {
+            "snippetModel": {
+              "unrestricted": "Microsoft.AspNetCore.Authentication.JwtBearer, 8.0.15\n\nRecommendation:\n\nRemove Microsoft.AspNetCore.Authentication.JwtBearer, and replace with new package Microsoft.AspNetCore.Authentication.JwtBearer 10.0.12",
+              "protected": "Microsoft.AspNetCore.Authentication.JwtBearer, 8.0.15\n\nRecommendation:\n\nRemove Microsoft.AspNetCore.Authentication.JwtBearer, and replace with new package Microsoft.AspNetCore.Authentication.JwtBearer 10.0.12"
+            },
+            "kind": "File",
+            "path": "InventoryAPI\\InventoryAPI.csproj",
+            "snippet": "Microsoft.AspNetCore.Authentication.JwtBearer, 8.0.15\n\nRecommendation:\n\nRemove Microsoft.AspNetCore.Authentication.JwtBearer, and replace with new package Microsoft.AspNetCore.Authentication.JwtBearer 10.0.12",
+            "protectedSnippet": "Microsoft.AspNetCore.Authentication.JwtBearer, 8.0.15\n\nRecommendation:\n\nRemove Microsoft.AspNetCore.Authentication.JwtBearer, and replace with new package Microsoft.AspNetCore.Authentication.JwtBearer 10.0.12",
+            "label": "Microsoft.AspNetCore.Authentication.JwtBearer 8.0.15",
+            "properties": {
+              "PackageId": "Microsoft.AspNetCore.Authentication.JwtBearer",
+              "PackageVersion": "8.0.15",
+              "PackageNewVersion": "10.0.12",
+              "PackageReplacements": null
+            }
+          }
+        },
+        {
+          "incidentId": "fd26c6c9-2179-403f-bf73-aa61ba336ddd",
+          "ruleId": "NuGet.0002",
+          "projectPath": "InventoryAPI\\InventoryAPI.csproj",
+          "state": "Active",
+          "location": {
+            "snippetModel": {
+              "unrestricted": "Microsoft.EntityFrameworkCore, 8.0.29\n\nRecommendation:\n\nRemove Microsoft.EntityFrameworkCore, and replace with new package Microsoft.EntityFrameworkCore 10.0.12",
+              "protected": "Microsoft.EntityFrameworkCore, 8.0.29\n\nRecommendation:\n\nRemove Microsoft.EntityFrameworkCore, and replace with new package Microsoft.EntityFrameworkCore 10.0.12"
+            },
+            "kind": "File",
+            "path": "InventoryAPI\\InventoryAPI.csproj",
+            "snippet": "Microsoft.EntityFrameworkCore, 8.0.29\n\nRecommendation:\n\nRemove Microsoft.EntityFrameworkCore, and replace with new package Microsoft.EntityFrameworkCore 10.0.12",
+            "protectedSnippet": "Microsoft.EntityFrameworkCore, 8.0.29\n\nRecommendation:\n\nRemove Microsoft.EntityFrameworkCore, and replace with new package Microsoft.EntityFrameworkCore 10.0.12",
+            "label": "Microsoft.EntityFrameworkCore 8.0.29",
+            "properties": {
+              "PackageId": "Microsoft.EntityFrameworkCore",
+              "PackageVersion": "8.0.29",
+              "PackageNewVersion": "10.0.12",
+              "PackageReplacements": null
+            }
+          }
+        },
+        {
+          "incidentId": "5153ea82-7b5e-4dbc-9e7f-7dfb16d70291",
+          "ruleId": "NuGet.0002",
+          "projectPath": "InventoryAPI\\InventoryAPI.csproj",
+          "state": "Active",
+          "location": {
+            "snippetModel": {
+              "unrestricted": "Microsoft.Extensions.Identity.Core, 9.0.4\n\nRecommendation:\n\nRemove Microsoft.Extensions.Identity.Core, and replace with new package Microsoft.Extensions.Identity.Core 10.0.12",
+              "protected": "Microsoft.Extensions.Identity.Core, 9.0.4\n\nRecommendation:\n\nRemove Microsoft.Extensions.Identity.Core, and replace with new package Microsoft.Extensions.Identity.Core 10.0.12"
+            },
+            "kind": "File",
+            "path": "InventoryAPI\\InventoryAPI.csproj",
+            "snippet": "Microsoft.Extensions.Identity.Core, 9.0.4\n\nRecommendation:\n\nRemove Microsoft.Extensions.Identity.Core, and replace with new package Microsoft.Extensions.Identity.Core 10.0.12",
+            "protectedSnippet": "Microsoft.Extensions.Identity.Core, 9.0.4\n\nRecommendation:\n\nRemove Microsoft.Extensions.Identity.Core, and replace with new package Microsoft.Extensions.Identity.Core 10.0.12",
+            "label": "Microsoft.Extensions.Identity.Core 9.0.4",
+            "properties": {
+              "PackageId": "Microsoft.Extensions.Identity.Core",
+              "PackageVersion": "9.0.4",
+              "PackageNewVersion": "10.0.12",
+              "PackageReplacements": null
+            }
+          }
+        },
+        {
+          "incidentId": "2e8bf369-65c7-4b49-b895-3e7d113a11ab",
+          "ruleId": "NuGet.0005",
+          "projectPath": "InventoryAPI\\InventoryAPI.csproj",
+          "state": "Active",
+          "location": {
+            "snippetModel": {
+              "unrestricted": "Microsoft.ApplicationInsights.AspNetCore, 2.21.0\n\nRecommendation:\n\nThis version is deprecated. Please use the most recent version.\nRemove Microsoft.ApplicationInsights.AspNetCore, and replace with new package Microsoft.ApplicationInsights.AspNetCore, 3.1.2",
+              "protected": "Microsoft.ApplicationInsights.AspNetCore, 2.21.0\n\nRecommendation:\n\nThis version is deprecated. Please use the most recent version.\nRemove Microsoft.ApplicationInsights.AspNetCore, and replace with new package Microsoft.ApplicationInsights.AspNetCore, 3.1.2"
+            },
+            "kind": "File",
+            "path": "InventoryAPI\\InventoryAPI.csproj",
+            "snippet": "Microsoft.ApplicationInsights.AspNetCore, 2.21.0\n\nRecommendation:\n\nThis version is deprecated. Please use the most recent version.\nRemove Microsoft.ApplicationInsights.AspNetCore, and replace with new package Microsoft.ApplicationInsights.AspNetCore, 3.1.2",
+            "protectedSnippet": "Microsoft.ApplicationInsights.AspNetCore, 2.21.0\n\nRecommendation:\n\nThis version is deprecated. Please use the most recent version.\nRemove Microsoft.ApplicationInsights.AspNetCore, and replace with new package Microsoft.ApplicationInsights.AspNetCore, 3.1.2",
+            "label": "Microsoft.ApplicationInsights.AspNetCore 2.21.0",
+            "properties": {
+              "PackageId": "Microsoft.ApplicationInsights.AspNetCore",
+              "PackageVersion": "2.21.0",
+              "PackageNewVersion": null,
+              "PackageReplacements": null
+            }
+          }
+        },
+        {
+          "incidentId": "dded3a1b-ed2d-4384-a24e-b6ae000a249e",
+          "ruleId": "NuGet.0005",
+          "projectPath": "InventoryAPI\\InventoryAPI.csproj",
+          "state": "Active",
+          "location": {
+            "snippetModel": {
+              "unrestricted": "MediatR.Extensions.Microsoft.DependencyInjection, 11.1.0\n\nRecommendation:\n\nThis package is no longer maintained and its functionality is folded into the main MediatR package.\nRemove MediatR.Extensions.Microsoft.DependencyInjection, and replace with new package MediatR.Extensions.Microsoft.DependencyInjection, 11.1.0",
+              "protected": "MediatR.Extensions.Microsoft.DependencyInjection, 11.1.0\n\nRecommendation:\n\nThis package is no longer maintained and its functionality is folded into the main MediatR package.\nRemove MediatR.Extensions.Microsoft.DependencyInjection, and replace with new package MediatR.Extensions.Microsoft.DependencyInjection, 11.1.0"
+            },
+            "kind": "File",
+            "path": "InventoryAPI\\InventoryAPI.csproj",
+            "snippet": "MediatR.Extensions.Microsoft.DependencyInjection, 11.1.0\n\nRecommendation:\n\nThis package is no longer maintained and its functionality is folded into the main MediatR package.\nRemove MediatR.Extensions.Microsoft.DependencyInjection, and replace with new package MediatR.Extensions.Microsoft.DependencyInjection, 11.1.0",
+            "protectedSnippet": "MediatR.Extensions.Microsoft.DependencyInjection, 11.1.0\n\nRecommendation:\n\nThis package is no longer maintained and its functionality is folded into the main MediatR package.\nRemove MediatR.Extensions.Microsoft.DependencyInjection, and replace with new package MediatR.Extensions.Microsoft.DependencyInjection, 11.1.0",
+            "label": "MediatR.Extensions.Microsoft.DependencyInjection 11.1.0",
+            "properties": {
+              "PackageId": "MediatR.Extensions.Microsoft.DependencyInjection",
+              "PackageVersion": "11.1.0",
+              "PackageNewVersion": null,
+              "PackageReplacements": null
+            }
+          }
+        },
+        {
+          "incidentId": "0356388c-3be5-4744-9778-d3abca14f27c",
+          "ruleId": "Project.0002",
+          "projectPath": "InventoryAPI\\InventoryAPI.csproj",
+          "state": "Active",
+          "location": {
+            "snippetModel": {
+              "unrestricted": "Current target framework: net8.0\nRecommended target framework: net10.0",
+              "protected": "Current target framework: net8.0\nRecommended target framework: net10.0"
+            },
+            "kind": "File",
+            "path": "InventoryAPI\\InventoryAPI.csproj",
+            "snippet": "Current target framework: net8.0\nRecommended target framework: net10.0",
+            "protectedSnippet": "Current target framework: net8.0\nRecommended target framework: net10.0",
+            "properties": {
+              "CurrentTargetFramework": "net8.0",
+              "RecommendedTargetFramework": "net10.0"
+            }
+          }
+        },
+        {
+          "incidentId": "0506bc6b-389c-4903-bb24-8f101b0750eb",
+          "ruleId": "Api.0001",
+          "description": "API is unavailable in net8.0 ",
+          "projectPath": "InventoryAPI\\InventoryAPI.csproj",
+          "state": "Active",
+          "location": {
+            "snippetModel": {
+              "unrestricted": "return new LoginResponse\r\n            {\r\n                Token = new JwtSecurityTokenHandler().WriteToken(token),\r\n                Expiration = token.ValidTo\r\n            };",
+              "protected": "P:System.IdentityModel.Tokens.Jwt.JwtSecurityToken.ValidTo"
+            },
+            "kind": "File",
+            "path": "InventoryAPI\\Helpers\\JwtHelper.cs",
+            "snippet": "return new LoginResponse\r\n            {\r\n                Token = new JwtSecurityTokenHandler().WriteToken(token),\r\n                Expiration = token.ValidTo\r\n            };",
+            "protectedSnippet": "P:System.IdentityModel.Tokens.Jwt.JwtSecurityToken.ValidTo",
+            "label": "P:System.IdentityModel.Tokens.Jwt.JwtSecurityToken.ValidTo",
+            "line": 36,
+            "column": 12
+          }
+        },
+        {
+          "incidentId": "f0462aaa-36e0-4c87-9109-52f62a95d9e5",
+          "ruleId": "Api.0001",
+          "description": "API is unavailable in net8.0 ",
+          "projectPath": "InventoryAPI\\InventoryAPI.csproj",
+          "state": "Active",
+          "location": {
+            "snippetModel": {
+              "unrestricted": "return new LoginResponse\r\n            {\r\n                Token = new JwtSecurityTokenHandler().WriteToken(token),\r\n                Expiration = token.ValidTo\r\n            };",
+              "protected": "T:System.IdentityModel.Tokens.Jwt.JwtSecurityTokenHandler"
+            },
+            "kind": "File",
+            "path": "InventoryAPI\\Helpers\\JwtHelper.cs",
+            "snippet": "return new LoginResponse\r\n            {\r\n                Token = new JwtSecurityTokenHandler().WriteToken(token),\r\n                Expiration = token.ValidTo\r\n            };",
+            "protectedSnippet": "T:System.IdentityModel.Tokens.Jwt.JwtSecurityTokenHandler",
+            "label": "T:System.IdentityModel.Tokens.Jwt.JwtSecurityTokenHandler",
+            "line": 36,
+            "column": 12
+          }
+        },
+        {
+          "incidentId": "45e5ea43-77e1-46d0-a260-67b4bfcedb4c",
+          "ruleId": "Api.0001",
+          "description": "API is unavailable in net8.0 ",
+          "projectPath": "InventoryAPI\\InventoryAPI.csproj",
+          "state": "Active",
+          "location": {
+            "snippetModel": {
+              "unrestricted": "return new LoginResponse\r\n            {\r\n                Token = new JwtSecurityTokenHandler().WriteToken(token),\r\n                Expiration = token.ValidTo\r\n            };",
+              "protected": "M:System.IdentityModel.Tokens.Jwt.JwtSecurityTokenHandler.#ctor"
+            },
+            "kind": "File",
+            "path": "InventoryAPI\\Helpers\\JwtHelper.cs",
+            "snippet": "return new LoginResponse\r\n            {\r\n                Token = new JwtSecurityTokenHandler().WriteToken(token),\r\n                Expiration = token.ValidTo\r\n            };",
+            "protectedSnippet": "M:System.IdentityModel.Tokens.Jwt.JwtSecurityTokenHandler.#ctor",
+            "label": "M:System.IdentityModel.Tokens.Jwt.JwtSecurityTokenHandler.#ctor",
+            "line": 36,
+            "column": 12
+          }
+        },
+        {
+          "incidentId": "02c85acc-7d1d-4362-ae2d-7319f561f618",
+          "ruleId": "Api.0001",
+          "description": "API is unavailable in net8.0 ",
+          "projectPath": "InventoryAPI\\InventoryAPI.csproj",
+          "state": "Active",
+          "location": {
+            "snippetModel": {
+              "unrestricted": "return new LoginResponse\r\n            {\r\n                Token = new JwtSecurityTokenHandler().WriteToken(token),\r\n                Expiration = token.ValidTo\r\n            };",
+              "protected": "M:System.IdentityModel.Tokens.Jwt.JwtSecurityTokenHandler.WriteToken(Microsoft.IdentityModel.Tokens.SecurityToken)"
+            },
+            "kind": "File",
+            "path": "InventoryAPI\\Helpers\\JwtHelper.cs",
+            "snippet": "return new LoginResponse\r\n            {\r\n                Token = new JwtSecurityTokenHandler().WriteToken(token),\r\n                Expiration = token.ValidTo\r\n            };",
+            "protectedSnippet": "M:System.IdentityModel.Tokens.Jwt.JwtSecurityTokenHandler.WriteToken(Microsoft.IdentityModel.Tokens.SecurityToken)",
+            "label": "M:System.IdentityModel.Tokens.Jwt.JwtSecurityTokenHandler.WriteToken(Microsoft.IdentityModel.Tokens.SecurityToken)",
+            "line": 36,
+            "column": 12
+          }
+        },
+        {
+          "incidentId": "437d08d3-27a0-4162-96a1-5f73b33e4871",
+          "ruleId": "Api.0001",
+          "description": "API is unavailable in net8.0 ",
+          "projectPath": "InventoryAPI\\InventoryAPI.csproj",
+          "state": "Active",
+          "location": {
+            "snippetModel": {
+              "unrestricted": "var token = new JwtSecurityToken(\r\n                issuer: _config[\u0022Jwt:Issuer\u0022],\r\n                audience: _config[\u0022Jwt:Audience\u0022],\r\n                claims: claims,\r\n                expires: DateTime.UtcNow.AddMinutes(Convert.ToDouble(_config[\u0022Jwt:DurationInMinutes\u0022])),\r\n                signingCredentials: new SigningCredentials(new SymmetricSecurityKey(key), SecurityAlgorithms.HmacSha256)\r\n            );",
+              "protected": "T:System.IdentityModel.Tokens.Jwt.JwtSecurityToken"
+            },
+            "kind": "File",
+            "path": "InventoryAPI\\Helpers\\JwtHelper.cs",
+            "snippet": "var token = new JwtSecurityToken(\r\n                issuer: _config[\u0022Jwt:Issuer\u0022],\r\n                audience: _config[\u0022Jwt:Audience\u0022],\r\n                claims: claims,\r\n                expires: DateTime.UtcNow.AddMinutes(Convert.ToDouble(_config[\u0022Jwt:DurationInMinutes\u0022])),\r\n                signingCredentials: new SigningCredentials(new SymmetricSecurityKey(key), SecurityAlgorithms.HmacSha256)\r\n            );",
+            "protectedSnippet": "T:System.IdentityModel.Tokens.Jwt.JwtSecurityToken",
+            "label": "T:System.IdentityModel.Tokens.Jwt.JwtSecurityToken",
+            "line": 28,
+            "column": 12
+          }
+        },
+        {
+          "incidentId": "420f20c7-2310-44bd-8013-015c29e6d983",
+          "ruleId": "Api.0001",
+          "description": "API is unavailable in net8.0 ",
+          "projectPath": "InventoryAPI\\InventoryAPI.csproj",
+          "state": "Active",
+          "location": {
+            "snippetModel": {
+              "unrestricted": "var token = new JwtSecurityToken(\r\n                issuer: _config[\u0022Jwt:Issuer\u0022],\r\n                audience: _config[\u0022Jwt:Audience\u0022],\r\n                claims: claims,\r\n                expires: DateTime.UtcNow.AddMinutes(Convert.ToDouble(_config[\u0022Jwt:DurationInMinutes\u0022])),\r\n                signingCredentials: new SigningCredentials(new SymmetricSecurityKey(key), SecurityAlgorithms.HmacSha256)\r\n            );",
+              "protected": "M:System.IdentityModel.Tokens.Jwt.JwtSecurityToken.#ctor(System.String,System.String,System.Collections.Generic.IEnumerable{System.Security.Claims.Claim},System.Nullable{System.DateTime},System.Nullable{System.DateTime},Microsoft.IdentityModel.Tokens.SigningCredentials)"
+            },
+            "kind": "File",
+            "path": "InventoryAPI\\Helpers\\JwtHelper.cs",
+            "snippet": "var token = new JwtSecurityToken(\r\n                issuer: _config[\u0022Jwt:Issuer\u0022],\r\n                audience: _config[\u0022Jwt:Audience\u0022],\r\n                claims: claims,\r\n                expires: DateTime.UtcNow.AddMinutes(Convert.ToDouble(_config[\u0022Jwt:DurationInMinutes\u0022])),\r\n                signingCredentials: new SigningCredentials(new SymmetricSecurityKey(key), SecurityAlgorithms.HmacSha256)\r\n            );",
+            "protectedSnippet": "M:System.IdentityModel.Tokens.Jwt.JwtSecurityToken.#ctor(System.String,System.String,System.Collections.Generic.IEnumerable{System.Security.Claims.Claim},System.Nullable{System.DateTime},System.Nullable{System.DateTime},Microsoft.IdentityModel.Tokens.SigningCredentials)",
+            "label": "M:System.IdentityModel.Tokens.Jwt.JwtSecurityToken.#ctor(System.String,System.String,System.Collections.Generic.IEnumerable{System.Security.Claims.Claim},System.Nullable{System.DateTime},System.Nullable{System.DateTime},Microsoft.IdentityModel.Tokens.SigningCredentials)",
+            "line": 28,
+            "column": 12
+          }
+        },
+        {
+          "incidentId": "bcc9ad1a-baaa-4c18-863f-7c6a8e04774a",
+          "ruleId": "Api.0002",
+          "description": "API is available in package Microsoft.AspNetCore.Authentication.JwtBearer, 8.0.6. Add package reference to Microsoft.AspNetCore.Authentication.JwtBearer, 8.0.6",
+          "projectPath": "InventoryAPI\\InventoryAPI.csproj",
+          "state": "Active",
+          "location": {
+            "snippetModel": {
+              "unrestricted": "options.TokenValidationParameters = new TokenValidationParameters\r\n        {\r\n            ValidateIssuer = true,\r\n            ValidateAudience = true,\r\n            ValidateLifetime = true,\r\n            ValidateIssuerSigningKey = true,\r\n            ValidIssuer = builder.Configuration[\u0022Jwt:Issuer\u0022],\r\n            ValidAudience = builder.Configuration[\u0022Jwt:Audience\u0022],\r\n            IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(key))\r\n        };",
+              "protected": "P:Microsoft.AspNetCore.Authentication.JwtBearer.JwtBearerOptions.TokenValidationParameters"
+            },
+            "kind": "File",
+            "path": "InventoryAPI\\Program.cs",
+            "snippet": "options.TokenValidationParameters = new TokenValidationParameters\r\n        {\r\n            ValidateIssuer = true,\r\n            ValidateAudience = true,\r\n            ValidateLifetime = true,\r\n            ValidateIssuerSigningKey = true,\r\n            ValidIssuer = builder.Configuration[\u0022Jwt:Issuer\u0022],\r\n            ValidAudience = builder.Configuration[\u0022Jwt:Audience\u0022],\r\n            IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(key))\r\n        };",
+            "protectedSnippet": "P:Microsoft.AspNetCore.Authentication.JwtBearer.JwtBearerOptions.TokenValidationParameters",
+            "label": "P:Microsoft.AspNetCore.Authentication.JwtBearer.JwtBearerOptions.TokenValidationParameters",
+            "properties": {
+              "PackageId": "Microsoft.AspNetCore.Authentication.JwtBearer",
+              "PackageNewVersion": "8.0.6"
+            },
+            "line": 65,
+            "column": 8
+          }
+        },
+        {
+          "incidentId": "f8b82bf4-4f96-4a68-8323-e1981fcab73a",
+          "ruleId": "Api.0002",
+          "description": "API is available in package Microsoft.AspNetCore.Authentication.JwtBearer, 8.0.6. Add package reference to Microsoft.AspNetCore.Authentication.JwtBearer, 8.0.6",
+          "projectPath": "InventoryAPI\\InventoryAPI.csproj",
+          "state": "Active",
+          "location": {
+            "snippetModel": {
+              "unrestricted": "builder.Services.AddAuthentication(\u0022Bearer\u0022)\r\n    .AddJwtBearer(\u0022Bearer\u0022, options =\u003E\r\n    {\r\n        options.TokenValidationParameters = new TokenValidationParameters\r\n        {\r\n            ValidateIssuer = true,\r\n            ValidateAudience = true,\r\n            ValidateLifetime = true,\r\n            ValidateIssuerSigningKey = true,\r\n            ValidIssuer = builder.Configuration[\u0022Jwt:Issuer\u0022],\r\n            ValidAudience = builder.Configuration[\u0022Jwt:Audience\u0022],\r\n            IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(key))\r\n        };\r\n    });",
+              "protected": "T:Microsoft.Extensions.DependencyInjection.JwtBearerExtensions"
+            },
+            "kind": "File",
+            "path": "InventoryAPI\\Program.cs",
+            "snippet": "builder.Services.AddAuthentication(\u0022Bearer\u0022)\r\n    .AddJwtBearer(\u0022Bearer\u0022, options =\u003E\r\n    {\r\n        options.TokenValidationParameters = new TokenValidationParameters\r\n        {\r\n            ValidateIssuer = true,\r\n            ValidateAudience = true,\r\n            ValidateLifetime = true,\r\n            ValidateIssuerSigningKey = true,\r\n            ValidIssuer = builder.Configuration[\u0022Jwt:Issuer\u0022],\r\n            ValidAudience = builder.Configuration[\u0022Jwt:Audience\u0022],\r\n            IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(key))\r\n        };\r\n    });",
+            "protectedSnippet": "T:Microsoft.Extensions.DependencyInjection.JwtBearerExtensions",
+            "label": "T:Microsoft.Extensions.DependencyInjection.JwtBearerExtensions",
+            "properties": {
+              "PackageId": "Microsoft.AspNetCore.Authentication.JwtBearer",
+              "PackageNewVersion": "8.0.6"
+            },
+            "line": 62,
+            "column": 0
+          }
+        },
+        {
+          "incidentId": "bdd659fe-1cf4-4b48-8b86-e13724b8b6ee",
+          "ruleId": "Api.0002",
+          "description": "API is available in package Microsoft.AspNetCore.Authentication.JwtBearer, 8.0.6. Add package reference to Microsoft.AspNetCore.Authentication.JwtBearer, 8.0.6",
+          "projectPath": "InventoryAPI\\InventoryAPI.csproj",
+          "state": "Active",
+          "location": {
+            "snippetModel": {
+              "unrestricted": "builder.Services.AddAuthentication(\u0022Bearer\u0022)\r\n    .AddJwtBearer(\u0022Bearer\u0022, options =\u003E\r\n    {\r\n        options.TokenValidationParameters = new TokenValidationParameters\r\n        {\r\n            ValidateIssuer = true,\r\n            ValidateAudience = true,\r\n            ValidateLifetime = true,\r\n            ValidateIssuerSigningKey = true,\r\n            ValidIssuer = builder.Configuration[\u0022Jwt:Issuer\u0022],\r\n            ValidAudience = builder.Configuration[\u0022Jwt:Audience\u0022],\r\n            IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(key))\r\n        };\r\n    });",
+              "protected": "M:Microsoft.Extensions.DependencyInjection.JwtBearerExtensions.AddJwtBearer(Microsoft.AspNetCore.Authentication.AuthenticationBuilder,System.String,System.Action{Microsoft.AspNetCore.Authentication.JwtBearer.JwtBearerOptions})"
+            },
+            "kind": "File",
+            "path": "InventoryAPI\\Program.cs",
+            "snippet": "builder.Services.AddAuthentication(\u0022Bearer\u0022)\r\n    .AddJwtBearer(\u0022Bearer\u0022, options =\u003E\r\n    {\r\n        options.TokenValidationParameters = new TokenValidationParameters\r\n        {\r\n            ValidateIssuer = true,\r\n            ValidateAudience = true,\r\n            ValidateLifetime = true,\r\n            ValidateIssuerSigningKey = true,\r\n            ValidIssuer = builder.Configuration[\u0022Jwt:Issuer\u0022],\r\n            ValidAudience = builder.Configuration[\u0022Jwt:Audience\u0022],\r\n            IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(key))\r\n        };\r\n    });",
+            "protectedSnippet": "M:Microsoft.Extensions.DependencyInjection.JwtBearerExtensions.AddJwtBearer(Microsoft.AspNetCore.Authentication.AuthenticationBuilder,System.String,System.Action{Microsoft.AspNetCore.Authentication.JwtBearer.JwtBearerOptions})",
+            "label": "M:Microsoft.Extensions.DependencyInjection.JwtBearerExtensions.AddJwtBearer(Microsoft.AspNetCore.Authentication.AuthenticationBuilder,System.String,System.Action{Microsoft.AspNetCore.Authentication.JwtBearer.JwtBearerOptions})",
+            "properties": {
+              "PackageId": "Microsoft.AspNetCore.Authentication.JwtBearer",
+              "PackageNewVersion": "8.0.6"
+            },
+            "line": 62,
+            "column": 0
+          }
+        },
+        {
+          "incidentId": "f5e5f705-aa47-423c-92f1-908f817586da",
+          "ruleId": "Api.0001",
+          "description": "Breaking change: DynamicallyAccessedMembers annotation removed from trim-unsafe configuration APIs ",
+          "projectPath": "InventoryAPI\\InventoryAPI.csproj",
+          "state": "Active",
+          "location": {
+            "snippetModel": {
+              "unrestricted": "var seqUrl = builder.Configuration.GetValue\u003Cstring\u003E(\u0022Seq:Url\u0022);",
+              "protected": "M:Microsoft.Extensions.Configuration.ConfigurationBinder.GetValue\u0060\u00601(Microsoft.Extensions.Configuration.IConfiguration,System.String)"
+            },
+            "kind": "File",
+            "path": "InventoryAPI\\Program.cs",
+            "snippet": "var seqUrl = builder.Configuration.GetValue\u003Cstring\u003E(\u0022Seq:Url\u0022);",
+            "protectedSnippet": "M:Microsoft.Extensions.Configuration.ConfigurationBinder.GetValue\u0060\u00601(Microsoft.Extensions.Configuration.IConfiguration,System.String)",
+            "label": "M:Microsoft.Extensions.Configuration.ConfigurationBinder.GetValue\u0060\u00601(Microsoft.Extensions.Configuration.IConfiguration,System.String)",
+            "links": [
+              {
+                "title": "API documentation",
+                "url": "https://github.com/dotnet/docs/blob/main/docs/core/compatibility/extensions/10.0/dynamically-accessed-members-configuration.md",
+                "isCustom": false
+              }
+            ],
+            "line": 15,
+            "column": 0
+          }
+        }
+      ],
+      "features": [
+        {
+          "featureId": "IdentityModel",
+          "incidents": [
+            "420f20c7-2310-44bd-8013-015c29e6d983",
+            "437d08d3-27a0-4162-96a1-5f73b33e4871",
+            "02c85acc-7d1d-4362-ae2d-7319f561f618",
+            "45e5ea43-77e1-46d0-a260-67b4bfcedb4c",
+            "f0462aaa-36e0-4c87-9109-52f62a95d9e5",
+            "0506bc6b-389c-4903-bb24-8f101b0750eb"
+          ]
+        }
+      ]
+    },
+    {
+      "path": "InventoryAPI.Tests\\InventoryAPI.Tests.csproj",
+      "startingProject": true,
+      "issues": 0,
+      "storyPoints": 0,
+      "properties": {
+        "appName": "InventoryAPI.Tests",
+        "projectKind": "DotNetCoreApp",
+        "frameworks": [
+          "net10.0"
+        ],
+        "languages": [
+          "C#"
+        ],
+        "tools": [
+          "MSBuild"
+        ],
+        "isSdkStyle": true,
+        "numberOfFiles": 10,
+        "numberOfCodeFiles": 8,
+        "linesTotal": 2771,
+        "linesOfCode": 976,
+        "totalApiScanned": 0,
+        "minLinesOfCodeToChange": 0,
+        "maxLinesOfCodeToChange": 0
+      },
+      "ruleInstances": [],
+      "features": []
+    }
+  ],
+  "rules": {
+    "NuGet.0002": {
+      "id": "NuGet.0002",
+      "isFeature": false,
+      "description": "NuGet package upgrade is recommended for selected target framework.\n\nStandard .NET packages are recommended to have versions matching version of .NET that project targets.\n\nSome other packages also are known to work better for selected target frameworks.",
+      "label": "NuGet package upgrade is recommended",
+      "severity": "Potential",
+      "effort": 1,
+      "links": [
+        {
+          "url": "https://go.microsoft.com/fwlink/?linkid=2262530",
+          "isCustom": false
+        }
+      ]
+    },
+    "NuGet.0005": {
+      "id": "NuGet.0005",
+      "isFeature": false,
+      "description": "NuGet package is deprecated.\n\nGo to its documentation and if there is a guidance for replacement of functionality provided by this package.",
+      "label": "NuGet package is deprecated",
+      "severity": "Optional",
+      "effort": 1,
+      "links": [
+        {
+          "url": "https://go.microsoft.com/fwlink/?linkid=2262531",
+          "isCustom": false
+        }
+      ]
+    },
+    "Project.0002": {
+      "id": "Project.0002",
+      "isFeature": false,
+      "description": "Project\u0027s target framework(s) needs to be changed to the new target framework that you selected for this upgrade.\n\nDuring upgrade target framework will be adjusted to corresponding platform when applicable. In some cases project would result in multiple target frameworks after the upgrade if it was using features that now have their own platforms in modern .NET frameworks (windows, iOS, Android etc).",
+      "label": "Project\u0027s target framework(s) needs to be changed",
+      "severity": "Mandatory",
+      "effort": 1,
+      "links": [
+        {
+          "title": "Overview of porting from .NET Framework to .NET",
+          "url": "https://go.microsoft.com/fwlink/?linkid=2265227",
+          "isCustom": false
+        },
+        {
+          "title": ".NET project SDKs",
+          "url": "https://go.microsoft.com/fwlink/?linkid=2265226",
+          "isCustom": false
+        }
+      ]
+    },
+    "Api.0001": {
+      "id": "Api.0001",
+      "isFeature": false,
+      "description": "API is binary incompatible for selected .NET version: affects existing binaries, often requiring recompilation, because the API has changed in a way that prevents older binaries from loading or executing.",
+      "label": "Binary incompatible for selected .NET version",
+      "severity": "Mandatory",
+      "effort": 1,
+      "links": [
+        {
+          "title": "Breaking changes in .NET",
+          "url": "https://go.microsoft.com/fwlink/?linkid=2262679",
+          "isCustom": false
+        }
+      ]
+    },
+    "Api.0002": {
+      "id": "Api.0002",
+      "isFeature": false,
+      "description": "API is source incompatible for selected .NET version: requires code changes to compile successfully when targeting a new version, such as removing obsolete APIs or changing method signatures.",
+      "label": "Source incompatible for selected .NET version",
+      "severity": "Potential",
+      "effort": 1,
+      "links": [
+        {
+          "title": "Breaking changes in .NET",
+          "url": "https://go.microsoft.com/fwlink/?linkid=2262679",
+          "isCustom": false
+        }
+      ]
+    },
+    "IdentityModel": {
+      "id": "IdentityModel",
+      "isFeature": false,
+      "description": "Windows Identity Foundation (WIF), SAML, and claims-based authentication APIs that have been replaced by modern identity libraries. WIF was the original identity framework for .NET Framework. Migrate to Microsoft.IdentityModel.* packages (modern identity stack).",
+      "label": "IdentityModel \u0026 Claims-based Security",
+      "severity": "Mandatory",
+      "effort": 4,
+      "links": [
+        {
+          "title": "Microsoft.IdentityModel packages",
+          "url": "https://go.microsoft.com/fwlink/?linkid=2341614",
+          "isCustom": false
+        }
+      ]
+    }
+  }
+}

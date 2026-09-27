@@ -1,4 +1,4 @@
-﻿using InventoryAPI.Models;
+using InventoryAPI.Models;
 using InventoryAPI.Services;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
@@ -50,11 +50,15 @@ namespace InventoryAPI.Controllers
                 }
 
             }
+            catch (InventoryAPI.Exceptions.DuplicateDataException)
+            {
+                return Ok(new { isError = true, message = "Duplicate data. The product " + product.ProductName + " already exists." });
+            }
             catch (SqlException ex) when (ex.Number == 2627 || ex.Number == 2601)
             {
                 // SQL error 2627 = Unique constraint violation
                 // SQL error 2601 = Cannot insert duplicate key row
-                return Ok(new {  isError = true, message = "Duplicate data. The product " + product.ProductName + " already exists." });
+                return Ok(new { isError = true, message = "Duplicate data. The product " + product.ProductName + " already exists." });
             }
             catch (Exception ex)
             {

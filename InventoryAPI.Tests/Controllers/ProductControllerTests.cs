@@ -80,8 +80,8 @@ namespace InventoryAPI.Tests.Controllers
         public async Task CreateProduct_ReturnsDuplicateMessage_OnSqlUniqueConstraint()
         {
             var serviceMock = new Mock<IProductService>();
-            var sqlEx = CreateSqlException(2627);
-            serviceMock.Setup(s => s.CreateProductAsync(It.IsAny<CreateProductRequest>())).ThrowsAsync(sqlEx);
+            // Throw a test-friendly DuplicateDataException instead of relying on internal SqlException construction
+            serviceMock.Setup(s => s.CreateProductAsync(It.IsAny<CreateProductRequest>())).ThrowsAsync(new InventoryAPI.Exceptions.DuplicateDataException("duplicate"));
 
             var controller = new ProductController(serviceMock.Object);
             var request = new CreateProductRequest { ProductName = "Dup" };
@@ -191,17 +191,63 @@ namespace InventoryAPI.Tests.Controllers
         {
             // Microsoft.Data.SqlClient.SqlError
             var sqlErrorType = typeof(SqlException).Assembly.GetType("Microsoft.Data.SqlClient.SqlError");
+            // Pick a non-public constructor that begins with an int parameter (error number)
             var sqlErrorCtor = sqlErrorType.GetConstructors(BindingFlags.NonPublic | BindingFlags.Instance)
-                .First();
-            var sqlError = sqlErrorCtor.Invoke(new object[] { number, (byte)0, (byte)0, "server", "message", "proc", 0 });
+                .FirstOrDefault(ci => ci.GetParameters().Length >= 1 && ci.GetParameters()[0].ParameterType == typeof(int))
+                ?? sqlErrorType.GetConstructors(BindingFlags.NonPublic | BindingFlags.Instance).First();
+
+            var ctorParams = sqlErrorCtor.GetParameters();
+            var ctorArgs = new object[ctorParams.Length];
+            for (int i = 0; i < ctorParams.Length; i++)
+            {
+                var pType = ctorParams[i].ParameterType;
+                if (i == 0)
+                    ctorArgs[i] = number;
+                else if (pType == typeof(byte))
+                    ctorArgs[i] = (byte)0;
+                else if (pType == typeof(string))
+                    ctorArgs[i] = i == 4 ? "message" : ""; // prefer message for middle param if present
+                else if (pType.IsValueType)
+                    ctorArgs[i] = Activator.CreateInstance(pType);
+                else
+                    ctorArgs[i] = null;
+            }
+
+            var sqlError = sqlErrorCtor.Invoke(ctorArgs);
 
             var errorCollectionType = typeof(SqlException).Assembly.GetType("Microsoft.Data.SqlClient.SqlErrorCollection");
             var errorCollection = Activator.CreateInstance(errorCollectionType, true);
             var addMethod = errorCollectionType.GetMethod("Add", BindingFlags.NonPublic | BindingFlags.Instance);
             addMethod.Invoke(errorCollection, new[] { sqlError });
 
-            var createException = typeof(SqlException).GetMethod("CreateException", BindingFlags.NonPublic | BindingFlags.Static, null, new[] { errorCollectionType, typeof(string) }, null);
-            var ex = (SqlException)createException.Invoke(null, new object[] { errorCollection, "7.0.0" });
+            // Find an internal CreateException overload that accepts the error collection as the first parameter
+            var createMethods = typeof(SqlException).GetMethods(BindingFlags.NonPublic | BindingFlags.Static)
+                .Where(m => m.Name == "CreateException").ToArray();
+            MethodInfo createMethod = null;
+            foreach (var m in createMethods)
+            {
+                var ps = m.GetParameters();
+                if (ps.Length >= 1 && ps[0].ParameterType == errorCollectionType)
+                {
+                    createMethod = m;
+                    break;
+                }
+            }
+            if (createMethod == null)
+                throw new InvalidOperationException("Could not find internal CreateException method on SqlException");
+
+            var createParams = createMethod.GetParameters();
+            var createArgs = new object[createParams.Length];
+            createArgs[0] = errorCollection;
+            for (int i = 1; i < createParams.Length; i++)
+            {
+                var pType = createParams[i].ParameterType;
+                if (pType == typeof(string)) createArgs[i] = "7.0.0";
+                else if (pType.IsValueType) createArgs[i] = Activator.CreateInstance(pType);
+                else createArgs[i] = null;
+            }
+
+            var ex = (SqlException)createMethod.Invoke(null, createArgs);
             return ex;
         }
     }
